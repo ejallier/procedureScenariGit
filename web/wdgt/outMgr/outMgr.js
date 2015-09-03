@@ -15,10 +15,11 @@ var outMgr = {
 	fOverflowMethod : "hidden",
 	
 	fStrings : ["défilement haut","Faire défiler le menu vers le haut",
-	            "défilement bas","Faire défiler le menu vers le bas",
-	            "Masquer le plan","Afficher le plan",
-	            "Masquer / afficher le plan","",
-	            "Ouvrir le menu","Fermer le menu"],
+	/*02*/      "défilement bas","Faire défiler le menu vers le bas",
+	/*04*/      "Masquer le plan","Afficher le plan",
+	/*06*/      "Masquer / afficher le plan","",
+	/*08*/      "Ouvrir le menu","Fermer le menu",
+	/*10*/      "vu","Page vue"],
 
 
 	/* === Public ============================================================= */
@@ -208,10 +209,7 @@ var outMgr = {
 				if(scServices.markedPages.isPageMarked(vLnk.href)) vLi.className += " seen";
 				var vViewSpan = this.xAddElt("span",vDiv,"viewBtn");
 				vViewSpan.id = scServices.markedPages.getIdFromUrl(vLnk.href);
-				var vViewLnk = this.xAddElt("a",vViewSpan);
-				vViewLnk.setAttribute("onclick", "markedPageMgr.toggleMarkPageId(this.parentNode.id); return false;");
-				vViewLnk.setAttribute("href", "#");
-				vViewLnk.innerHTML = '<span>Page vue</span>';
+				this.xAddBtn(vViewSpan, null, this.xGetStr(10), this.xGetStr(11)).onclick = function(){markedPageMgr.toggleMarkPageId(this.parentNode.id); return false;};
 			}
 			vLnk.innerHTML = '<span class="mnu_ti">'+vChi.label+'</span>';
 			if (vType == "b"){

@@ -16,7 +16,7 @@
  * The Initial Developer of the Original Code is 
  * samuel.monsarrat@kelis.fr
  *
- * Portions created by the Initial Developer are Copyright (C) 2009-2014
+ * Portions created by the Initial Developer are Copyright (C) 2009-2015
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -658,7 +658,7 @@ scImgMgr.xInitZm = function(pAnc) {
 			vMag.style.position="absolute";
 			vMag.fAnc = pAnc;
 			vMag.style.backgroundColor = "white";
-			vMag.style.backgroundImage = "url('"+pAnc.fZmUri+"')";
+			vMag.style.backgroundImage = 'url("'+pAnc.fZmUri+'")';
 			vMag.style.zIndex = "100";
 			vMag.onmousemove = this.sZmMagMove;
 			vMag.onmouseout = this.sZmMagHide;

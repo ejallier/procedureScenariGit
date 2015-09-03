@@ -507,11 +507,11 @@ var searchMgr = {
 				vTxtVal = vTxtNode.nodeValue;
 				for (var j = 0; j<vHits.length;j++){
 					vHit = vHits[j];
-					vTxtMached += vTxtVal.substring(vIdx,vHit.start).replace("<", "&lt;");
-					vTxtMached += "<span class='schHit' id='schId"+i+j+"'>"+vTxtVal.substring(vHit.start,vHit.end).replace("<", "&lt;")+"</span>";
+					vTxtMached += vTxtVal.substring(vIdx,vHit.start).replace(/</g, "&lt;");
+					vTxtMached += "<span class='schHit' id='schId"+i+j+"'>"+vTxtVal.substring(vHit.start,vHit.end).replace(/</g, "&lt;")+"</span>";
 					vIdx = vHit.end;
 				}
-				vTxtMached += vTxtVal.substring(vHits[vHits.length-1].end);
+				vTxtMached += vTxtVal.substring(vHits[vHits.length-1].end).replace(/</g, "&lt;");
 				vHolder = scDynUiMgr.addElement("span", vTxtNode.parentNode, null, vTxtNode);
 				vTxtNode.parentNode.removeChild(vTxtNode);
 				vHolder.innerHTML = vTxtMached;

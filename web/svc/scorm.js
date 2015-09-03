@@ -1,13 +1,17 @@
 
-	
+if (!Array.isArray) {
+	Array.isArray = function(arg) {
+		return Object.prototype.toString.call(arg) === '[object Array]';
+	};
+}
 scServices.dataUtil = {
 	serialiseObjJs : function(pObj){
 		var vBuf="";
 		if(pObj) for (var vKey in pObj){
-			var vLbl = (pObj instanceof Array) ? "" : "\'" + vKey + "\':";
+			var vLbl = (Array.isArray(pObj)) ? "" : "\'" + vKey + "\':";
 			var vObj = pObj[vKey];
 			if(vObj != null) {
-				if(vObj instanceof Array){
+				if(Array.isArray(vObj)){
 					vBuf+= (vBuf!="" ? "," : "") + vLbl + "[" + this.serialiseObjJs(vObj) + "]";
 				} else if(typeof vObj == "object" || vObj instanceof Object){
 					vBuf+= (vBuf!="" ? "," : "") + vLbl + "{" + this.serialiseObjJs(vObj) + "}";

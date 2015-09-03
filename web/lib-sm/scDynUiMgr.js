@@ -150,6 +150,7 @@ scDynUiMgr.subWindow = {
 		var vCont = pOpt.ANCHORPATH ? scPaLib.findNode(pOpt.ANCHORPATH, (pOpt.ANCHORCTX ? pOpt.ANCHORCTX : pAnc)) || vBody : vBody;
 		var vId = scDynUiMgr.subWindow.fSubWins.length;
 		var vWin = scDynUiMgr.addElement("div",vCont,this.xBuildCls(pName,"win"),null,{position:"absolute",visibility:(this.fMode==0 ? "hidden" : "")});
+		vWin.setAttribute("role", "dialog");
 		vWin.fClassName = vWin.className
 		vWin.fAnc = pAnc;
 		vWin.fOpt = pOpt;
@@ -178,6 +179,7 @@ scDynUiMgr.subWindow = {
 			var vSubWin = scDynUiMgr.subWindow.fSubWins[vId];
 			if(vSubWin.fTi) vSubWin.fTi.innerHTML = pTitle;
 			vSubWin.fFra.title = pTitle;
+			vSubWin.setAttribute("aria-label", pTitle);
 		}
 		vWin.fFra.hideSubWindow = function(){
 			scDynUiMgr.hideSubWindow(vId);
